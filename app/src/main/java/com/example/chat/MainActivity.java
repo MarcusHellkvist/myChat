@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AddFriend.class));
+                startActivity(new Intent(MainActivity.this, MessageActivity.class));
             }
         });
     }
