@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Message> listOfMessages;
+    private String currentUserId;
 
     public static class ViewHolder0 extends RecyclerView.ViewHolder{
         public TextView userMessage;
@@ -32,8 +33,9 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         }
     }
 
-    public MessageAdapter(ArrayList<Message> listOfMessages) {
+    public MessageAdapter(ArrayList<Message> listOfMessages, String currentUserId) {
         this.listOfMessages = listOfMessages;
+        this.currentUserId = currentUserId;
     }
 
     @NonNull
@@ -64,10 +66,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemViewType(int position) {
 
-        //om position är 0 används user_row
-        //om position är 2 används friend_row
-
-        return position % 2 * 2;
+        if (listOfMessages.get(position).getSender().contentEquals(currentUserId)){
+            return 0;
+        } else {
+            return 2;
+        }
     }
 
     @Override
