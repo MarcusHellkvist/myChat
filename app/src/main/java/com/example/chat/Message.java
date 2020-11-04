@@ -2,23 +2,23 @@ package com.example.chat;
 
 public class Message {
 
-    private String message;
+    private String text;
     private String sender;
 
     public Message() {
     }
 
-    public Message(String message, String sender) {
-        this.message = message;
+    public Message(String text, String sender) {
+        this.text = text;
         this.sender = sender;
     }
 
-    public String getMessage() {
-        return message;
+    public String getText() {
+        return text;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setText(String text) {
+        this.text = text;
     }
 
     public String getSender() {

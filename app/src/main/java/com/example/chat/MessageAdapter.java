@@ -53,11 +53,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         switch (holder.getItemViewType()){
             case 0:
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
-                viewHolder0.userMessage.setText(listOfMessages.get(position).getMessage());
+                viewHolder0.userMessage.setText(listOfMessages.get(position).getText());
                 break;
             case 2:
                 ViewHolder2 viewHolder2 = (ViewHolder2) holder;
-                viewHolder2.friendMessage.setText(listOfMessages.get(position).getMessage());
+                viewHolder2.friendMessage.setText(listOfMessages.get(position).getText());
                 break;
         }
 
