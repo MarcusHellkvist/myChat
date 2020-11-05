@@ -25,8 +25,6 @@ public class AddFriend extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
-    private DocumentReference currentUser;
-    private String currentUserUid;
 
     private EditText etSearch;
     private Button btnSearch;
@@ -48,10 +46,7 @@ public class AddFriend extends AppCompatActivity {
         etSearch = findViewById(R.id.et_search);
         btnSearch = findViewById(R.id.btn_search);
 
-        rvListSearch = findViewById(R.id.rv_list_search);
-        rvListSearch.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        rvListSearch.setLayoutManager(layoutManager);
+        initRecyclerView();
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,23 +59,23 @@ public class AddFriend extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()){
-
                                 User friend = document.toObject(User.class);
                                 friends.add(friend);
                             }
-                            mAdapter = new SearchAdapter(friends);
-                            rvListSearch.setAdapter(mAdapter);
+                            mAdapter.notifyDataSetChanged();
                         }
                     }
                 });
-
             }
         });
 
-
-
-
-
-
+    }
+    private void initRecyclerView() {
+        rvListSearch = findViewById(R.id.rv_list_search);
+        rvListSearch.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        rvListSearch.setLayoutManager(layoutManager);
+        mAdapter = new SearchAdapter(friends);
+        rvListSearch.setAdapter(mAdapter);
     }
 }
