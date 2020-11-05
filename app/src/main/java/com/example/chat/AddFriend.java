@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class AddFriend extends AppCompatActivity {
+public class AddFriend extends AppCompatActivity implements SearchAdapter.OnFriendListener {
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
@@ -75,7 +76,13 @@ public class AddFriend extends AppCompatActivity {
         rvListSearch.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         rvListSearch.setLayoutManager(layoutManager);
-        mAdapter = new SearchAdapter(friends);
+        mAdapter = new SearchAdapter(friends, this);
         rvListSearch.setAdapter(mAdapter);
+    }
+
+    @Override
+    public void onFriendClick(int position) {
+        Toast.makeText(this, "name: " + friends.get(position).getName(), Toast.LENGTH_SHORT).show();
+
     }
 }

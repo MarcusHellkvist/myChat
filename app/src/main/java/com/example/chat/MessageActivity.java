@@ -116,8 +116,6 @@ public class MessageActivity extends AppCompatActivity {
                 });
     }*/
 
-
-
     private void getMessagesFromFirestore() {
         db.collection("rooms")
                 .document("room1")

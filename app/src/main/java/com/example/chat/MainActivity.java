@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<User> friendlist = new ArrayList<>();
 
-    private Button btnAddFriend, btnLogout;
+    private Button btnAddFriend, btnLogout, btnMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnAddFriend = findViewById(R.id.btnAddFriend);
         btnLogout = findViewById(R.id.btn_logout);
+        btnMessages = findViewById(R.id.btn_messages);
 
         recyclerView = findViewById(R.id.rv_list);
         recyclerView.setHasFixedSize(true);
@@ -68,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnAddFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, AddFriend.class));
+            }
+        });
+
+        btnMessages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, MessageActivity.class));
